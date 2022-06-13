@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DownloadablesController;
+use App\Http\Controllers\Admin\DownloadablesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return inertia('App/Dashboard');
 });
 
 Route::get('/admin', function () {
-    return view('admin');
+    return inertia('Admin/Dashboard');
 });
 
-Route::post('/downloadables', [DownloadablesController::class, 'store'])->name('downloadables.store');
+Route::get('/admin/downloadables', [DownloadablesController::class, 'index'])->name('admin.downloadables.index');
+Route::post('/admin/downloadables', [DownloadablesController::class, 'store'])->name('admin.downloadables.store');
+Route::get('/admin/downloadables/create', [DownloadablesController::class, 'create'])->name('admin.downloadables.create');
+Route::get('/admin/downloadables/edit', [DownloadablesController::class, 'edit'])->name('admin.downloadables.edit');
+Route::put('/admin/downloadables', [DownloadablesController::class, 'update'])->name('admin.downloadables.update');

@@ -1,6 +1,6 @@
-require('./bootstrap');
-
-import { createApp } from 'vue'
+import { createApp, h } from 'vue';
+import { createInertiaApp } from '@inertiajs/inertia-vue3';
+import { InertiaProgress } from '@inertiajs/progress'
 import axios from 'axios';
 
 /**
@@ -13,8 +13,17 @@ window.axios = axios;
  
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-const app = createApp({});
 
-app.component('admin', require('./components/Admin.vue').default);
+createInertiaApp({
+    resolve: name => require(`./Pages/${name}`),
 
-app.mount('#app');
+    setup({ el, App, props, plugin }) {
+        const app = createApp({ render: () => h(App, props) });
+
+        app.config.globalProperties.$route = route; 
+        
+        app.use(plugin).mount(el);
+    },
+})
+
+InertiaProgress.init();
