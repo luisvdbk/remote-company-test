@@ -24,7 +24,8 @@ class StoreDownloadableRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'max:255'],
+            'file' => ['required', 'file', 'mimetypes:application/pdf', 'max:1000'],
         ];
     }
 }

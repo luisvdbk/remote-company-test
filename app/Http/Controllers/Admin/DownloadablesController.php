@@ -22,7 +22,7 @@ class DownloadablesController extends Controller
 
     public function create(Request $request)
     {
-
+        return inertia('Admin/Downloadables/Create');
     }
 
     public function store(StoreDownloadableRequest $request, StoreDownloadableAction $storeDownloadable)
