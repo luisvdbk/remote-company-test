@@ -19585,8 +19585,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "render": () => (/* binding */ render)
 /* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"text-2xl font-semibold\">Admin</h1><section class=\"my-10 bg-white p-5 rounded\"><h2 class=\"text-lg font-semibold\">Downloadables</h2></section><section class=\"my-10 bg-white p-5 rounded\"><h2 class=\"text-lg font-semibold\">Snippets</h2></section><section class=\"my-10 bg-white p-5 rounded\"><h2 class=\"text-lg font-semibold\">Links</h2></section>", 4);
+
 function render(_ctx, _cache) {
-  return null;
+  return _hoisted_1;
 }
 
 /***/ }),
