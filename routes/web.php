@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DownloadablesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+
+Route::post('/downloadables', [DownloadablesController::class, 'store'])->name('downloadables.store');
