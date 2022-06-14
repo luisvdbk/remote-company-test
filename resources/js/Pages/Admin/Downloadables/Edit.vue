@@ -16,7 +16,7 @@
         </div>
 
         <div class="flex justify-end">
-            <button type="submit" class="bg-blue-600 rounded p-2">Update</button>
+            <button type="submit" class="bg-blue-600 text-white rounded p-2">Update</button>
         </div>
     </form>
 </template>

@@ -3,7 +3,7 @@
 
     <section>
         <div class="mb-6">
-            <Link :href="$route('admin.downloadables.create')">Add new</Link>
+            <Link :href="$route('admin.downloadables.create')" class="text-blue-600">Add new</Link>
         </div>
 
         <ul class="max-w-screen-lg">
