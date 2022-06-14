@@ -6,7 +6,7 @@ use App\Models\Downloadable;
 use Inertia\Testing\AssertableInertia as Assert;
 use Tests\TestCase;
 
-class ListDownloadablesTest extends TestCase
+class DownloadablesIndexTest extends TestCase
 {
     /** @test */
     public function it_returns_a_paginated_list_of_downloadables()

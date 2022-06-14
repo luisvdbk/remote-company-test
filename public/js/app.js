@@ -21674,17 +21674,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'Create',
-  props: {
-    downloadable: Object
-  },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
-    var props = __props;
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
+      title: null,
+      file: null
+    });
     var __returned__ = {
-      props: props
+      form: form,
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -21707,6 +21710,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'Index',
   props: {
@@ -21716,13 +21723,28 @@ __webpack_require__.r(__webpack_exports__);
     var expose = _ref.expose;
     expose();
     var props = __props;
-    var _props$downloadables = props.downloadables,
-        data = _props$downloadables.data,
-        meta = _props$downloadables.meta;
+    var data = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+      return props.downloadables.data;
+    });
+    var meta = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
+      return props.downloadables.meta;
+    });
+
+    var deleteDownloadable = function deleteDownloadable(downloadable) {
+      if (!confirm('Are you sure?')) {
+        return;
+      }
+
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia["delete"](route('admin.downloadables.destroy', downloadable.id));
+    };
+
     var __returned__ = {
       props: props,
       data: data,
-      meta: meta
+      meta: meta,
+      deleteDownloadable: deleteDownloadable,
+      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia,
+      computed: _vue_reactivity__WEBPACK_IMPORTED_MODULE_1__.computed
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -21776,12 +21798,74 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", null, null, -1
+var _hoisted_2 = {
+  "class": "flex flex-col mb-6"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "title"
+}, "Title", -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
+  key: 0,
+  "class": "text-red-600"
+};
+var _hoisted_5 = {
+  "class": "flex flex-col mb-6"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "file"
+}, "File", -1
+/* HOISTED */
+);
+
+var _hoisted_7 = {
+  key: 0,
+  "class": "text-red-600"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "flex justify-end"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "bg-blue-600 rounded p-2"
+}, "Create")], -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, _hoisted_2], 64
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $setup.form.post(_ctx.$route('admin.downloadables.store'));
+    }, ["prevent"])),
+    "class": "max-w-screen-sm"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    name: "title",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $setup.form.title = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.title]]), $setup.form.errors.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.title), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "file",
+    name: "file",
+    accept: "application/pdf",
+    onInput: _cache[1] || (_cache[1] = function ($event) {
+      return $setup.form.file = $event.target.files[0];
+    })
+  }, null, 32
+  /* HYDRATE_EVENTS */
+  ), $setup.form.errors.file ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.errors.file), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_8], 32
+  /* HYDRATE_EVENTS */
+  )], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -21809,18 +21893,22 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_2 = {
-  "class": "mb-4"
+  "class": "mb-6"
 };
 var _hoisted_3 = ["href"];
 var _hoisted_4 = {
   "class": "max-w-screen-lg"
 };
 var _hoisted_5 = {
-  "class": "flex flex-col md:flex-row"
+  "class": "sm:max-w-[80%] flex flex-col lg:flex-row mb-2 sm:mb-0"
 };
 var _hoisted_6 = ["textContent"];
 var _hoisted_7 = ["href", "textContent"];
-var _hoisted_8 = ["href"];
+var _hoisted_8 = {
+  "class": "flex justify-end items-center"
+};
+var _hoisted_9 = ["href"];
+var _hoisted_10 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: _ctx.$route('admin.downloadables.create'),
@@ -21830,7 +21918,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , _hoisted_3)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.data, function (downloadable, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
       key: downloadable.id,
-      "class": "flex justify-between mb-2"
+      "class": "flex flex-col sm:flex-row justify-between mb-6 pb-2 border-b-2 border-slate-400"
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(downloadable.title),
       "class": "mr-2"
@@ -21839,15 +21927,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_6), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: downloadable.url,
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(downloadable.url),
-      "class": "text-blue-600"
+      "class": "text-blue-600 truncate"
     }, null, 8
     /* PROPS */
-    , _hoisted_7)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    , _hoisted_7)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: _ctx.$route('admin.downloadables.edit', downloadable.id),
-      "class": "text-yellow-600"
+      "class": "text-yellow-600 mr-4"
     }, "Edit", 8
     /* PROPS */
-    , _hoisted_8)]);
+    , _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      onClick: function onClick($event) {
+        return $setup.deleteDownloadable(downloadable);
+      },
+      href: "",
+      "class": "text-red-600"
+    }, "Delete", 8
+    /* PROPS */
+    , _hoisted_10)])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])], 64

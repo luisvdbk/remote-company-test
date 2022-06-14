@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use Illuminate\Support\Str;
 
-class StoreDownloadableTest extends TestCase
+class DownloadablesStoreTest extends TestCase
 {
     /** @test */
     public function downloadable_can_be_stored()
@@ -18,7 +18,7 @@ class StoreDownloadableTest extends TestCase
         $this->post(route('admin.downloadables.store'), [
             'title' => 'Example title',
             'file' => $fakeFile = UploadedFile::fake()->create('test-file.pdf', 1000, 'application/pdf'),
-        ])->assertCreated();
+        ])->assertRedirect(route('admin.downloadables.index'));
 
         $downloadable = Downloadable::latest()->first();
         $storedFiles = Storage::disk(Downloadable::STORAGE_DISK)->allFiles('downloadables');

@@ -2,27 +2,42 @@
     <h1 class="text-2xl font-semibold mb-10">Downloadables</h1>
 
     <section>
-        <div class="mb-4">
+        <div class="mb-6">
             <a :href="$route('admin.downloadables.create')" class="text-blue-600">Add new</a>
         </div>
 
         <ul class="max-w-screen-lg">
-            <li v-for="(downloadable, index) in data" :key="downloadable.id" class="flex justify-between mb-2">
-                <div class="flex flex-col md:flex-row">
+            <li v-for="(downloadable, index) in data" :key="downloadable.id" class="flex flex-col sm:flex-row justify-between mb-6 pb-2 border-b-2 border-slate-400">
+                <div class="sm:max-w-[80%] flex flex-col lg:flex-row mb-2 sm:mb-0">
                     <span v-text="downloadable.title" class="mr-2"></span>
-                    <a :href="downloadable.url" v-text="downloadable.url" class="text-blue-600"></a>
+                    <a :href="downloadable.url" v-text="downloadable.url" class="text-blue-600 truncate"></a>
                 </div>
 
-                <a :href="$route('admin.downloadables.edit', downloadable.id)" class="text-yellow-600">Edit</a>
+                <div class="flex justify-end items-center">
+                    <a :href="$route('admin.downloadables.edit', downloadable.id)" class="text-yellow-600 mr-4">Edit</a>
+                    <button @click="deleteDownloadable(downloadable)" href="" class="text-red-600">Delete</button>
+                </div>
             </li>
         </ul>
     </section>
 </template>
 
 <script setup>
+import { Inertia } from '@inertiajs/inertia';
+import { computed } from '@vue/reactivity';
+
 const props = defineProps({
     downloadables: Object 
 });
 
-const { data, meta } = props.downloadables;
+const data = computed(() => props.downloadables.data);
+const meta = computed(() => props.downloadables.meta);
+
+const deleteDownloadable = (downloadable) => {
+    if (! confirm('Are you sure?')) {
+        return;
+    }
+    
+    Inertia.delete(route('admin.downloadables.destroy', downloadable.id));
+}
 </script>

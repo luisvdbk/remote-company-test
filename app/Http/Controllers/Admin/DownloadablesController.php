@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\DestroyDownloadableAction;
 use App\Actions\StoreDownloadableAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDownloadableRequest;
@@ -13,7 +14,7 @@ class DownloadablesController extends Controller
 {
     public function index(Request $request)
     {
-        $downloadables = Downloadable::query()->simplePaginate();
+        $downloadables = Downloadable::query()->latest()->simplePaginate();
 
         return inertia('Admin/Downloadables/Index', [
             'downloadables' => DownloadableResource::collection($downloadables),
@@ -27,16 +28,23 @@ class DownloadablesController extends Controller
 
     public function store(StoreDownloadableRequest $request, StoreDownloadableAction $storeDownloadable)
     {
-        $downloadable = $storeDownloadable->execute(
+        $storeDownloadable->execute(
             $request->title,
             $request->file('file')
         );
 
-        return $downloadable;
+        return redirect()->route('admin.downloadables.index')->with('message', 'Successfully added a new downloadable');
     }
 
-    public function view(Downloadable $downloadable, Request $request)
+    public function edit(Downloadable $downloadable, Request $request)
     {
+
+    }
+
+    public function destroy(Downloadable $downloadable, Request $request, DestroyDownloadableAction $destroyDownloadable)
+    {
+        $destroyDownloadable->execute($downloadable);
         
+        return redirect()->route('admin.downloadables.index')->with('message', 'Successfully deleted the downloadable');
     }
 }

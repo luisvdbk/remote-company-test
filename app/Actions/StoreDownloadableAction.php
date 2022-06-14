@@ -9,7 +9,7 @@ class StoreDownloadableAction
 {
     public function execute(string $title, UploadedFile $file): Downloadable
     {
-        $path = $file->store('downloadables', 'public');
+        $path = $file->store('downloadables', Downloadable::STORAGE_DISK);
 
         $downloadable = Downloadable::create([
             'title' => $title,
