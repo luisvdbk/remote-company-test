@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Admin\Downloadables;
+namespace Tests\Feature\Downloadables;
 
 use App\Models\Downloadable;
 use Inertia\Testing\AssertableInertia as Assert;
@@ -8,13 +8,13 @@ use Tests\TestCase;
 
 class DownloadablesIndexTest extends TestCase
 {
-    /** @test */
-    public function it_displays_the_index_view_with_a_paginated_list_of_downloadables()
-    {
+     /** @test */
+     public function it_displays_the_index_view_with_a_paginated_list_of_downloadables()
+     {
         $downloadableA = Downloadable::factory()->create(['created_at' => now()->subDays(2)]);
         $downloadableB = Downloadable::factory()->create(['created_at' => now()->subDays(1)]);
         $downloadableC = Downloadable::factory()->create(['created_at' => now()->subDays(3)]);
-       
+    
         
         $this
             ->get(route('admin.downloadables.index'))
@@ -29,5 +29,5 @@ class DownloadablesIndexTest extends TestCase
                     ->has('downloadables.links')
                     ->has('downloadables.meta')
             );
-    }
+     }
 }
