@@ -2,9 +2,9 @@
     <h1 class="text-2xl font-semibold">Admin</h1>
 
     <section class="my-10 bg-white p-5 rounded">
-        <a :href="$route('admin.downloadables.index')">
+        <Link :href="$route('admin.downloadables.index')">
             <h2 class="text-lg font-semibold">Downloadables</h2>
-        </a>
+        </Link>
     </section>
 
     <section class="my-10 bg-white p-5 rounded">
@@ -17,4 +17,5 @@
 </template>
 
 <script setup>
+import { Link } from '@inertiajs/inertia-vue3';
 </script>

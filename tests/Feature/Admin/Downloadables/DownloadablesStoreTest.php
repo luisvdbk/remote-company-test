@@ -16,7 +16,7 @@ class DownloadablesStoreTest extends TestCase
         Storage::fake(Downloadable::STORAGE_DISK);
 
         $this->post(route('admin.downloadables.store'), [
-            'title' => 'Example title',
+            'title' => 'Test title',
             'file' => $fakeFile = UploadedFile::fake()->create('test-file.pdf', 1000, 'application/pdf'),
         ])->assertRedirect(route('admin.downloadables.index'));
 
@@ -24,7 +24,7 @@ class DownloadablesStoreTest extends TestCase
         $storedFiles = Storage::disk(Downloadable::STORAGE_DISK)->allFiles('downloadables');
         $storedDownloadable = $storedFiles[0];
 
-        $this->assertEquals('Example title', $downloadable->title);
+        $this->assertEquals('Test title', $downloadable->title);
         $this->assertEquals($storedDownloadable, $downloadable->path);
 
         $this->assertCount(1, $storedFiles);
@@ -38,7 +38,7 @@ class DownloadablesStoreTest extends TestCase
     public function validations_must_pass(array $overrides = [], array $expectedErrors = [])
     {
         $data = array_merge([
-            'title' => 'Example title',
+            'title' => 'Test title',
             'file' => UploadedFile::fake()->create('test-file.pdf', 1000, 'application/pdf'),
         ], $overrides);
 
@@ -47,6 +47,8 @@ class DownloadablesStoreTest extends TestCase
             ->post(route('admin.downloadables.store'), $data)
             ->assertRedirect(route('admin.downloadables.create'))
             ->assertSessionHasErrors($expectedErrors);
+
+        $this->assertEquals(0, Downloadable::query()->count());
     }
 
     public function validationProvider(): array

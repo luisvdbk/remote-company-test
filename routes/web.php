@@ -25,7 +25,7 @@ Route::get('/admin', function () {
 Route::get('/admin/downloadables', [DownloadablesController::class, 'index'])->name('admin.downloadables.index');
 Route::post('/admin/downloadables', [DownloadablesController::class, 'store'])->name('admin.downloadables.store');
 Route::get('/admin/downloadables/create', [DownloadablesController::class, 'create'])->name('admin.downloadables.create');
-Route::get('/admin/downloadables/edit', [DownloadablesController::class, 'edit'])->name('admin.downloadables.edit');
+Route::get('/admin/downloadables/{downloadable}/edit', [DownloadablesController::class, 'edit'])->name('admin.downloadables.edit');
 Route::put('/admin/downloadables/{downloadable}', [DownloadablesController::class, 'update'])->name('admin.downloadables.update');
 Route::delete('/admin/downloadables/{downloadable}', [DownloadablesController::class, 'destroy'])->name('admin.downloadables.destroy');
 

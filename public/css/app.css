@@ -759,6 +759,9 @@ select {
 .-ml-px {
   margin-left: -1px;
 }
+.mt-1 {
+  margin-top: 0.25rem;
+}
 .flex {
   display: flex;
 }
