@@ -14,7 +14,7 @@ class DownloadablesController extends Controller
 {
     public function index(Request $request)
     {
-        $downloadables = Downloadable::query()->latest()->simplePaginate();
+        $downloadables = Downloadable::query()->latest()->simplePaginate(10);
 
         return inertia('Admin/Downloadables/Index', [
             'downloadables' => DownloadableResource::collection($downloadables),

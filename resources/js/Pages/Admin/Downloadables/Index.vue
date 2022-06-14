@@ -7,7 +7,7 @@
         </div>
 
         <ul class="max-w-screen-lg">
-            <li v-for="(downloadable, index) in data" :key="downloadable.id" class="flex flex-col sm:flex-row justify-between mb-6 pb-2 border-b-2 border-slate-400">
+            <li v-for="(downloadable, index) in downloadables.data" :key="downloadable.id" class="flex flex-col sm:flex-row justify-between mb-6 pb-2 border-b-2 border-slate-400">
                 <div class="sm:max-w-[80%] flex flex-col lg:flex-row mb-2 sm:mb-0">
                     <span v-text="downloadable.title" class="mr-2"></span>
                     <a :href="downloadable.url" v-text="downloadable.url" class="text-blue-600 truncate"></a>
@@ -18,20 +18,19 @@
                     <button @click="deleteDownloadable(downloadable)" href="" class="text-red-600">Delete</button>
                 </div>
             </li>
+
+            <SimplePagination :paginated-object="downloadables" />
         </ul>
     </section>
 </template>
 
 <script setup>
 import { Inertia } from '@inertiajs/inertia';
-import { computed } from '@vue/reactivity';
+import SimplePagination from "@/Components/SimplePagination";
 
 const props = defineProps({
     downloadables: Object 
 });
-
-const data = computed(() => props.downloadables.data);
-const meta = computed(() => props.downloadables.meta);
 
 const deleteDownloadable = (downloadable) => {
     if (! confirm('Are you sure?')) {
