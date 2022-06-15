@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Downloadable;
+use App\Models\Snippet;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,11 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Downloadable::truncate();
+        Snippet::truncate();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Downloadable::factory(50)->create();
+        Snippet::factory(50)->create();
     }
 }
