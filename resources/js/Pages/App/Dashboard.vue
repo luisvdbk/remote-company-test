@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-2xl font-semibold">Admin</h1>
+    <h1 class="text-2xl font-semibold">App</h1>
 
     <section class="my-10 bg-white p-5 rounded">
         <Link :href="$route('downloadables.index')">
@@ -8,7 +8,9 @@
     </section>
 
     <section class="my-10 bg-white p-5 rounded">
-        <h2 class="text-lg font-semibold">Snippets</h2>
+        <Link :href="$route('snippets.index')">
+            <h2 class="text-lg font-semibold">Snippets</h2>
+        </Link>
     </section>
 
     <section class="my-10 bg-white p-5 rounded">

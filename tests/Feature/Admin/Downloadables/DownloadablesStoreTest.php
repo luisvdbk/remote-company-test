@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Downloadables;
+namespace Tests\Feature\Admin\Downloadables;
 
 use App\Models\Downloadable;
 use Illuminate\Http\UploadedFile;

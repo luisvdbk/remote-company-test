@@ -15,7 +15,7 @@
         @inertiaHead
     </head>
 
-    <body class="min-h-screen p-10 bg-slate-50">
+    <body class="min-h-screen max-w-screen-lg p-10 bg-slate-50">
         @inertia
     </body>
 </html>

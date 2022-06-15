@@ -17,11 +17,11 @@ class DownloadablesIndexTest extends TestCase
     
         
         $this
-            ->get(route('admin.downloadables.index'))
+            ->get(route('downloadables.index'))
             ->assertOk()
             ->assertInertia(fn (Assert $page) =>
                 $page
-                    ->component('Admin/Downloadables/Index')
+                    ->component('App/Downloadables/Index')
                     ->has('downloadables.data', 3, fn (Assert $page) => $page->hasAll(['id', 'title', 'url']))
                     ->where('downloadables.data.0.id', $downloadableB->id)
                     ->where('downloadables.data.1.id', $downloadableA->id)

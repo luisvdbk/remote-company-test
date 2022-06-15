@@ -8,7 +8,9 @@
     </section>
 
     <section class="my-10 bg-white p-5 rounded">
-        <h2 class="text-lg font-semibold">Snippets</h2>
+        <Link :href="$route('admin.snippets.index')">
+            <h2 class="text-lg font-semibold">Snippets</h2>
+        </Link>
     </section>
 
     <section class="my-10 bg-white p-5 rounded">

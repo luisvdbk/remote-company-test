@@ -3,8 +3,6 @@
 namespace Tests\Feature\Admin\Downloadables;
 
 use App\Models\Downloadable;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 

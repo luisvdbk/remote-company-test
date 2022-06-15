@@ -6,7 +6,7 @@
             <Link :href="$route('admin.downloadables.create')" class="text-blue-600">Add new</Link>
         </div>
 
-        <ul class="max-w-screen-lg">
+        <ul>
             <li v-for="(downloadable, index) in downloadables.data" :key="downloadable.id" class="flex flex-col sm:flex-row justify-between mb-6 pb-2 border-b-2 border-slate-400">
                 <div class="sm:max-w-[80%] flex flex-col lg:flex-row mb-2 sm:mb-0">
                     <span v-text="downloadable.title" class="mr-2"></span>
