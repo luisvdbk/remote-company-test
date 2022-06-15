@@ -8,9 +8,10 @@
 - Run `php artisan key:generate`
 - Change the DB related configurations on the `.env` file. I used sqlite for simplicity
 - Run `php artisan config:cache`
-- Run `php artisan migrate`
+- Run `php artisan migrate --seed`
 - Run `npm install`
 - Run `npm run dev`
+- Go to `/` and `/admin` pages
 
 ### Tests
 Run `php artisan test`
