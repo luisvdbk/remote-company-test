@@ -19607,7 +19607,6 @@ __webpack_require__.r(__webpack_exports__);
       props: props,
       emit: emit,
       code: code,
-      computed: _vue_reactivity__WEBPACK_IMPORTED_MODULE_2__.computed,
       ref: _vue_reactivity__WEBPACK_IMPORTED_MODULE_2__.ref,
       CodeEditor: simple_code_editor__WEBPACK_IMPORTED_MODULE_0__["default"],
       watch: vue__WEBPACK_IMPORTED_MODULE_1__.watch

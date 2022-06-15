@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from '@vue/reactivity';
+import { ref } from '@vue/reactivity';
 import CodeEditor from 'simple-code-editor';
 import { watch } from 'vue';
 
